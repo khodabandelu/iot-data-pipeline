@@ -66,8 +66,11 @@ public class SensorEventServiceImpl implements SensorEventService {
     private static Double getMedianValue(List<SensorEvent> list) {
         var values = list.stream().map(SensorEvent::getValue).sorted().toList();
         int len = list.size();
-        if (len<=0){
+        if (len == 0){
             return null;
+        }
+        if (len == 1){
+            return Double.valueOf(values.get(0));
         }
         if (len % 2 == 1) {
             return Double.valueOf(values.get(len / 2));
