@@ -152,6 +152,13 @@ or generate group sensor events simulator
 after simulation ,you can collect the data from kafka and store them into cassandra then you can call query based on
 these data
 
+before you should create keyspace in cassandra
+```sql
+create keyspace iot_data 
+    with replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+
+```
+
 and you can call [localhost:8802/api/sensorEvent](localhost:8802/api/sensorEvent) with below query params 
 to get aggregate value of aggregation function (average,median,max,min)
 - sensorId
